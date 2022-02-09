@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+
     <title>eqi-investimentos</title>
+
 </head>
+
 
 <body>
     <h1>Simulador de Investimentos</h1>
@@ -17,80 +20,107 @@
             <div class="rendimento-index">
                 <div>
                     <div>
-                        <p>Rendimento</p>
-                        <input type="radio" name="fav_language" value="Bruto"> <label for="html">Bruto</label>
-                        <input type="radio" name="fav_language" value="Líquido"> <label for="html">Líquido</label>
+                        <p>Rendimento <img class="exclamacao" src="imagens/ponto-de-exclamacao.png" alt=""></p>
+                        <form id="form_rendimento">
+                            <input type="radio" id="bruto" name="rendimento" value="bruto" checked="checked"> <label for="html">Bruto</label>
+                            <input type="radio" id="liquido" name="rendimento" value="liquido"> <label for="html">Líquido</label>
+                        </form>
                     </div>
                     <div>
-                        <p>Aponte Inicial</p>
-                        <input type="text" name="fav_language" value=""> <label for="html"></label>
+                        <p><b>Aponte Inicial</b></p>
+                        <input class="aponte_mensal" type="text" id="aponte_inicial" name="aponte_inicial" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p>Prazo (em meses)</p>
-                        <input type="text" name="fav_language" value=""> <label for="html"></label>
+                        <p><b>Prazo (em meses)</b></p>
+                        <input class="aponte_mensal" type="text" id="prazo" name="prazo" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p>IPCA (ao ano)</p>
-                        <input type="text" name="fav_language" value=""> <label for="html"></label>
+                        <p><b>IPCA (ao ano)</b></p>
+                        <input class="aponte_mensal" type="text" id="ipca" name="ipca" value=""> <label for="html"></label>
                     </div>
-                    <button>Limpar Campos</button>
+                    <button class="limpar_campos" onclick="emptyFields()">Limpar Campos</button>
                 </div>
                 <div>
                     <div>
-                        <p>Tipos de Indexação</p>
-                        <input type="radio" name="fav_language" value="Bruto"> <label for="html">PRÉ</label>
-                        <input type="radio" name="fav_language" value="Líquido"> <label for="html">POS</label>
-                        <input type="radio" name="fav_language" value="Líquido"> <label for="html">FIXADO</label>
+                        <p>Tipos de Indexação <img class="exclamacao" src="imagens/ponto-de-exclamacao.png" alt=""></p>
+                        <form class="form_tipos_importacao" id="form_tipos_importacao">
+                            <label>
+                                    <input type="radio" name="tipos_importacao" value="pre" checked="checked" />
+                                    <div class="checkmark">
+                                        <div class="checkmark_stem"></div>
+                                        <div class="checkmark_kick"></div>
+                                    </div>
+                                    <span>PRÉ</span>
+                                </label>
+                            <label>
+                                    <input type="radio" name="tipos_importacao" value="pos"  />
+                                    <div class="checkmark">
+                                        <div class="checkmark_stem"></div>
+                                        <div class="checkmark_kick"></div>
+                                    </div>
+                                    <span>POS</span>
+                                </label>
+                            <label>
+                                    <input type="radio" name="tipos_importacao" value="fixado"  />
+                                    <div class="checkmark">
+                                        <div class="checkmark_stem"></div>
+                                        <div class="checkmark_kick"></div>
+                                    </div>
+                                    <span>FIXADO</span>
+                                </label>
+                        </form>
                     </div>
                     <div>
-                        <p>Aponte Mensal</p>
-                        <input type="text" name="fav_language" value=""> <label for="html"></label>
+                        <p><b>Aponte Mensal</b></p>
+                        <input class="aponte_mensal" type="text" id="aponte_mensal" name="aponte_mensal" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p>Rentabilidade</p>
-                        <input type="text" name="fav_language" value=""> <label for="html"></label>
+                        <p><b>Rentabilidade</b></p>
+                        <input class="aponte_mensal" type="text" id="rentabilidade" name="rentabilidade" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p>CDI (ao ano)</p>
-                        <input type="text" name="fav_language" value=""> <label for="html"></label>
+                        <p><b>CDI (ao ano)</b></p>
+                        <input class="aponte_mensal" type="text" id="cdi" name="cdi" value=""> <label for="html"></label>
                     </div>
-                    <button>Simular</button>
+                    <button class="botao_simular" onclick="generateSimulation()">Simular</button>
                 </div>
             </div>
         </div>
         <div class="simulacao">
             <h2>Resultado de Simulação</h2>
+            <div class="loader"></div>
             <div class="valor">
                 <div>
                     <p>Valor final Bruto</p>
-                    <p>1234</p>
+                    <input id="valor_final_bruto"></input>
                 </div>
                 <div>
                     <p>Alíquota do IR</p>
-                    <p>1234</p>
+                    <input id="aliquota_ir"></input>
                 </div>
                 <div>
                     <p>Valor Pago em IR</p>
-                    <p>1234</p>
+                    <input id="valor_pago_ir"></input>
                 </div>
                 <div>
                     <p>Valor Final Líquido</p>
-                    <p>1234</p>
+                    <input id="valor_final_liquido"></input>
                 </div>
                 <div>
                     <p>Valor Total Investido</p>
-                    <p>1234</p>
+                    <input id="valor_total_investido"></input>
                 </div>
                 <div>
                     <p>Ganho Líquido</p>
-                    <p>1234</p>
+                    <input id="ganho_liquido"></input>
                 </div>
-                <div>
-                    <p>Projeção de Valores</p>
-                </div>
+            </div>
+            <div class="grafico">
+                <p>Projeção de Valores</p>
             </div>
         </div>
     </div>
 </body>
+<script src="./main.js"></script>
 
 </html>

@@ -1,31 +1,198 @@
-    body {
-        background-color: #dcdcdc;
+body {
+    background-color: hsl(0, 0%, 90%);
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+.simulador {
+    margin-left: 3rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.simulacao {}
+
+.rendimento-index {
+    display: flex;
+    gap: 2rem;
+}
+
+.valor {
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+}
+
+.limpar_campos {
+    margin-top: 2rem;
+    height: 2.5rem;
+    border: 2px solid gray;
+    border-radius: 6px;
+    width: 12rem;
+    font-weight: 800;
+}
+
+.botao_simular {
+    margin-top: 2rem;
+    height: 2.5rem;
+    border: 2px solid orange;
+    border-radius: 6px;
+    width: 12rem;
+    font-weight: 800;
+    background-color: orange;
+}
+
+.botao_simular:active {
+    background-color: pink;
+    color: purple
+}
+
+.valor>div {
+    border: 1px solid white;
+    background-color: white;
+    width: 11rem;
+    height: 5rem;
+    text-align: center;
+    box-shadow: 0 0 5px grey;
+}
+
+.valor>div>p:nth-child(1) {
+    font-weight: 700
+}
+
+.exclamacao {
+    margin-left: 3rem;
+}
+
+.aponte_mensal {
+    border-bottom-width: 1px;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-left-width: 0;
+    background-color: hsl(0, 0%, 90%);
+}
+
+form.form_tipos_importacao>label>input {
+    visibility: hidden;
+}
+
+form.form_tipos_importacao {
+    display: flex;
+}
+
+form.form_tipos_importacao {
+    height: 5rem;
+}
+
+form.form_tipos_importacao>label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    border: 2px solid grey;
+    margin-bottom: -2px;
+    cursor: pointer;
+    padding-right: 2rem
+}
+
+form.form_tipos_importacao>label:nth-child(1) {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+form.form_tipos_importacao>label:nth-child(3) {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+form.form_tipos_importacao>label>span {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 2em;
+}
+
+form.form_tipos_importacao>label>input+div {
+    visibility: hidden;
+    color: green;
+    margin-left: -0.5em;
+    margin-right: 0.2em;
+}
+
+form.form_tipos_importacao>label>input:checked~span {
+    color: #fff
+}
+
+form.form_tipos_importacao>label>input:checked~span::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: orange;
+    z-index: -1;
+}
+
+form.form_tipos_importacao>label>input:checked+div {
+    visibility: visible;
+}
+
+.checkmark {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    -ms-transform: rotate(45deg);
+    /* IE 9 */
+    -webkit-transform: rotate(45deg);
+    /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}
+
+.checkmark_stem {
+    position: absolute;
+    width: 3px;
+    height: 9px;
+    background-color: #fff;
+    left: 11px;
+    top: 6px;
+}
+
+.checkmark_kick {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    left: 8px;
+    top: 12px;
+}
+
+.loader {
+    display: none;
+    border: 16px solid #f3f3f3;
+    /* Light grey */
+    border-top: 16px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
     }
-    
-    h1 {
-        text-align: center;
-        font-size: 40px;
+    100% {
+        transform: rotate(360deg);
     }
-    
-    .simulador {
-        margin-left: 3rem;
-    }
-    
-    .container {
-        display: flex;
-        justify-content: space-around;
-    }
-    
-    .simulacao {}
-    
-    .rendimento-index {
-        display: flex;
-        gap: 2rem;
-    }
-    
-    .valor {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: auto;
-        grid-gap: 2rem;
-    }
+}
+
+.grafico {
+    display: none
+}
