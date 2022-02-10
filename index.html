@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="main.css" media="screen" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <title>eqi-investimentos</title>
 
@@ -21,21 +22,37 @@
                 <div>
                     <div>
                         <p>Rendimento <img class="exclamacao" src="imagens/ponto-de-exclamacao.png" alt=""></p>
-                        <form id="form_rendimento">
-                            <input type="radio" id="bruto" name="rendimento" value="bruto" checked="checked"> <label for="html">Bruto</label>
-                            <input type="radio" id="liquido" name="rendimento" value="liquido"> <label for="html">Líquido</label>
+                        <form id="form_rendimento" class="form_tipos_importacao">
+                            <label>
+                            <input type="radio" id="bruto" name="rendimento" value="bruto" checked="checked">
+                            <div class="checkmark">
+                                <div class="checkmark_stem"></div>
+                                <div class="checkmark_kick"></div>
+                                
+                            </div>
+                            <span>Bruto</span>
+                        </label>
+
+                            <label class="rendimento_label">
+                            <input type="radio" id="liquido" name="rendimento" value="liquido">
+                            <div class="checkmark">
+                                <div class="checkmark_stem"></div>
+                                <div class="checkmark_kick"></div>
+                            </div>
+                            <span>Líquido</span>
+                            </label>
                         </form>
                     </div>
                     <div>
-                        <p><b>Aponte Inicial</b></p>
+                        <p class="rendimento_negrito">Aponte Inicial</p>
                         <input class="aponte_mensal" type="text" id="aponte_inicial" name="aponte_inicial" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p><b>Prazo (em meses)</b></p>
+                        <p class="rendimento_negrito">Prazo (em meses)</p>
                         <input class="aponte_mensal" type="text" id="prazo" name="prazo" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p><b>IPCA (ao ano)</b></p>
+                        <p class="rendimento_negrito">IPCA (ao ano)</p>
                         <input class="aponte_mensal" type="text" id="ipca" name="ipca" value=""> <label for="html"></label>
                     </div>
                     <button class="limpar_campos" onclick="emptyFields()">Limpar Campos</button>
@@ -71,15 +88,15 @@
                         </form>
                     </div>
                     <div>
-                        <p><b>Aponte Mensal</b></p>
+                        <p class="indexacao_negrito">Aponte Mensal</p>
                         <input class="aponte_mensal" type="text" id="aponte_mensal" name="aponte_mensal" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p><b>Rentabilidade</b></p>
+                        <p class="indexacao_negrito">Rentabilidade</p>
                         <input class="aponte_mensal" type="text" id="rentabilidade" name="rentabilidade" value=""> <label for="html"></label>
                     </div>
                     <div>
-                        <p><b>CDI (ao ano)</b></p>
+                        <p class="indexacao_negrito">CDI (ao ano)</p>
                         <input class="aponte_mensal" type="text" id="cdi" name="cdi" value=""> <label for="html"></label>
                     </div>
                     <button class="botao_simular" onclick="generateSimulation()">Simular</button>
@@ -88,7 +105,7 @@
         </div>
         <div class="simulacao">
             <h2>Resultado de Simulação</h2>
-            <div class="loader"></div>
+            <!-- <div class="loader"></div> -->
             <div class="valor">
                 <div>
                     <p>Valor final Bruto</p>

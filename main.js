@@ -9,9 +9,9 @@ const valor_total_investido = document.getElementById('valor_total_investido')
 const ganho_liquido = document.getElementById('ganho_liquido')
 const form_rendimento = document.getElementById('form_rendimento')
 const form_tipos_importacao = document.getElementById('form_tipos_importacao')
-const valor = document.querySelector('.valor')
-const grafico = document.querySelector('.grafico')
-const loader = document.querySelector('.loader')
+    // const valor = document.querySelector('.valor')
+    // const grafico = document.querySelector('.grafico')
+    // const loader = document.querySelector('.loader')
 
 const options = {
     mode: 'cors',
@@ -60,19 +60,26 @@ const generateSimulation = async() => {
     valor_final_liquido.value = fields[0].valorFinalLiquido
     valor_total_investido.value = fields[0].valorTotalInvestido
     ganho_liquido.value = fields[0].ganhoLiquido
-    loader.style.display = "block"
-    valor.style.display = "none"
-    grafico.style.display = "none"
-    setTimeout(() => {
-        loader.style.display = "none"
-        valor.style.display = "grid"
-        grafico.style.display = "block"
-    }, 2000);
+        // loader.style.display = "block"
+        // valor.style.display = "none"
+        // grafico.style.display = "none"
+        // setTimeout(() => {
+        //     loader.style.display = "none"
+        //     valor.style.display = "grid"
+        //     grafico.style.display = "block"
+        // }, 2000);
 }
 
 // Função que limpa os campos
 const emptyFields = () => {
     input_ipca.value = ""
+    input_cdi.value = ""
+    valor_final_bruto.value = ""
+    aliquota_ir.value = ""
+    valor_pago_ir.value = ""
+    valor_final_liquido.value = ""
+    valor_total_investido.value = ""
+    ganho_liquido.value = ""
 }
 
 
