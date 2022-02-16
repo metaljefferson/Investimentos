@@ -10,7 +10,7 @@ const ganho_liquido = document.getElementById('ganho_liquido')
 const form_rendimento = document.getElementById('form_rendimento')
 const form_tipos_importacao = document.getElementById('form_tipos_importacao')
     // const valor = document.querySelector('.valor')
-    // const grafico = document.querySelector('.grafico')
+const grafico = document.getElementById('grafico')
     // const loader = document.querySelector('.loader')
 
 const options = {
@@ -70,6 +70,66 @@ const generateSimulation = async() => {
         // }, 2000);
 }
 
+const generateGraphic = async() => {
+    const fields = await returnFieldsSimulation()
+    try {
+        deleteGraphic()
+    } catch (error) {
+        console.log(error)
+    }
+    try {
+        createElementsGraphic(fields)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+https: //vuesax.com/docs/components/Table.html#api teste Junior Developer App development test
+
+
+
+    const createElementsGraphic = (fields) => {
+        const comAporte = fields[0].graficoValores.comAporte
+        const semAporte = fields[0].graficoValores.semAporte
+        const comAporteLength = Object.entries(comAporte).length
+        const semAporteLength = Object.entries(semAporte).length
+            // const verifyLength = comAporteLength > semAporteLength ? comAporteLength : semAporteLength
+        if (comAporteLength > semAporteLength) {
+            verifyLength = comAporteLength
+        } else {
+            verifyLength = semAporteLength
+        }
+        const divContainer = document.createElement('div')
+        divContainer.classList.add('divContainer')
+        divContainer.setAttribute("id", "divContainer")
+        for (let index = 0; index < verifyLength; index++) {
+            const divConteudo = document.createElement('div')
+            const divBarras = document.createElement('div')
+            const divComAporte = document.createElement('div')
+            const divSemAporte = document.createElement('div')
+            const numeroBarra = document.createElement('p')
+            divConteudo.classList.add('divConteudo')
+            divBarras.classList.add('divBarras')
+            divComAporte.classList.add('divComAporte')
+            divSemAporte.classList.add('divSemAporte')
+            divComAporte.style.width = Object.entries(comAporte)[index][1] + 'px'
+            divSemAporte.style.width = Object.entries(semAporte)[index][1] + 'px'
+            numeroBarra.innerHTML = index
+            divBarras.appendChild(divComAporte)
+            divBarras.appendChild(divSemAporte)
+            divConteudo.appendChild(divBarras)
+            divConteudo.appendChild(numeroBarra)
+            divContainer.appendChild(divConteudo)
+        }
+
+        grafico.appendChild(divContainer)
+    }
+
+const deleteGraphic = () => {
+    const divContainer = document.getElementById('divContainer')
+    divContainer.remove()
+}
+
 // Função que limpa os campos
 const emptyFields = () => {
     input_ipca.value = ""
@@ -80,6 +140,7 @@ const emptyFields = () => {
     valor_final_liquido.value = ""
     valor_total_investido.value = ""
     ganho_liquido.value = ""
+    deleteGraphic()
 }
 
 

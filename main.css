@@ -216,6 +216,43 @@ form.form_tipos_importacao>label>input:checked+div {
     font-weight: 500
 }
 
+.divContainer {
+    transform: rotate(-90deg);
+    width: 15rem;
+    height: 15rem;
+}
+
+.divConteudo {
+    position: relative;
+    margin-top: 1rem;
+}
+
+.divConteudo p {
+    position: absolute;
+    transform: rotate(90deg);
+    left: -1rem;
+    top: 0;
+}
+
+.divBarras {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: row-reverse;
+}
+
+.divComAporte,
+.divSemAporte {
+    height: 3rem;
+}
+
+.divComAporte {
+    background-color: orangered;
+}
+
+.divSemAporte {
+    background-color: #000;
+}
+
 
 /* .loader { */
 

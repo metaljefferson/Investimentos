@@ -99,7 +99,7 @@
                         <p class="indexacao_negrito">CDI (ao ano)</p>
                         <input class="aponte_mensal" type="text" id="cdi" name="cdi" value=""> <label for="html"></label>
                     </div>
-                    <button class="botao_simular" onclick="generateSimulation()">Simular</button>
+                    <button class="botao_simular" onclick="generateSimulation(), generateGraphic()">Simular</button>
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
                     <input id="ganho_liquido"></input>
                 </div>
             </div>
-            <div class="grafico">
+            <div class="grafico" id="grafico">
                 <p>Projeção de Valores</p>
             </div>
         </div>
