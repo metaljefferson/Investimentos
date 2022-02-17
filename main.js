@@ -38,6 +38,7 @@ const returnSimulation = async(search) => {
 }
 
 
+
 const setValuesIndicator = async() => {
     const ipca_value = await returnIndicator('nome=ipca').then(response => response[0].valor);
     const cdi_value = await returnIndicator('nome=cdi').then(response => response[0].valor);
@@ -60,14 +61,6 @@ const generateSimulation = async() => {
     valor_final_liquido.value = fields[0].valorFinalLiquido
     valor_total_investido.value = fields[0].valorTotalInvestido
     ganho_liquido.value = fields[0].ganhoLiquido
-        // loader.style.display = "block"
-        // valor.style.display = "none"
-        // grafico.style.display = "none"
-        // setTimeout(() => {
-        //     loader.style.display = "none"
-        //     valor.style.display = "grid"
-        //     grafico.style.display = "block"
-        // }, 2000);
 }
 
 const generateGraphic = async() => {
@@ -84,50 +77,46 @@ const generateGraphic = async() => {
     }
 }
 
-https: //vuesax.com/docs/components/Table.html#api teste Junior Developer App development test
 
 
-
-    const createElementsGraphic = (fields) => {
-        const comAporte = fields[0].graficoValores.comAporte
-        const semAporte = fields[0].graficoValores.semAporte
-        const comAporteLength = Object.entries(comAporte).length
-        const semAporteLength = Object.entries(semAporte).length
-            // const verifyLength = comAporteLength > semAporteLength ? comAporteLength : semAporteLength
-        if (comAporteLength > semAporteLength) {
-            verifyLength = comAporteLength
-        } else {
-            verifyLength = semAporteLength
-        }
-        const divContainer = document.createElement('div')
-        divContainer.classList.add('divContainer')
-        divContainer.setAttribute("id", "divContainer")
-        for (let index = 0; index < verifyLength; index++) {
-            const divConteudo = document.createElement('div')
-            const divBarras = document.createElement('div')
-            const divComAporte = document.createElement('div')
-            const divSemAporte = document.createElement('div')
-            const numeroBarra = document.createElement('p')
-            divConteudo.classList.add('divConteudo')
-            divBarras.classList.add('divBarras')
-            divComAporte.classList.add('divComAporte')
-            divSemAporte.classList.add('divSemAporte')
-            divComAporte.style.width = Object.entries(comAporte)[index][1] + 'px'
-            divSemAporte.style.width = Object.entries(semAporte)[index][1] + 'px'
-            numeroBarra.innerHTML = index
-            divBarras.appendChild(divComAporte)
-            divBarras.appendChild(divSemAporte)
-            divConteudo.appendChild(divBarras)
-            divConteudo.appendChild(numeroBarra)
-            divContainer.appendChild(divConteudo)
-        }
-
-        grafico.appendChild(divContainer)
+const createElementsGraphic = (fields) => {
+    const comAporte = fields[0].graficoValores.comAporte
+    const semAporte = fields[0].graficoValores.semAporte
+    const comAporteLength = Object.entries(comAporte).length
+    const semAporteLength = Object.entries(semAporte).length
+    const verifyLength = comAporteLength > semAporteLength ? comAporteLength : semAporteLength
+    const divContainer = document.createElement('div')
+    divContainer.classList.add('divContainer')
+    divContainer.setAttribute("id", "divContainer")
+    for (let index = 0; index < verifyLength; index++) {
+        const divConteudo = document.createElement('div')
+        const divBarras = document.createElement('div')
+        const divComAporte = document.createElement('div')
+        const divSemAporte = document.createElement('div')
+        const numeroBarra = document.createElement('p')
+        divConteudo.classList.add('divConteudo')
+        divBarras.classList.add('divBarras')
+        divComAporte.classList.add('divComAporte')
+        divSemAporte.classList.add('divSemAporte')
+        divComAporte.style.height = Object.entries(comAporte)[index][1] / 14 + 'px'
+        divSemAporte.style.height = Object.entries(semAporte)[index][1] / 14 + 'px'
+        numeroBarra.innerHTML = index
+        divBarras.appendChild(divComAporte)
+        divBarras.appendChild(divSemAporte)
+        divConteudo.appendChild(divBarras)
+        divConteudo.appendChild(numeroBarra)
+        divContainer.appendChild(divConteudo)
     }
+
+    grafico.appendChild(divContainer)
+    grafico.insertAdjacentHTML('beforeend', ' <div id="legendas"> <p class="tempo_meses">Tempo (meses)</p><div class="legenda_aporte"><span class="com_aporte">Com aporte</span><span class="sem_aporte">Sem aporte</span></div> </div>')
+}
 
 const deleteGraphic = () => {
     const divContainer = document.getElementById('divContainer')
     divContainer.remove()
+    const divLegendas = document.getElementById('legendas')
+    divLegendas.remove()
 }
 
 // Função que limpa os campos
@@ -140,9 +129,22 @@ const emptyFields = () => {
     valor_final_liquido.value = ""
     valor_total_investido.value = ""
     ganho_liquido.value = ""
+    aponte_inicial.value = ""
+    prazo.value = ""
+    aponte_mensal.value = ""
+    rentabilidade.value = ""
     deleteGraphic()
 }
 
-
+function checkInp(e) {
+    var x = e.value;
+    let validator = e.parentNode.getElementsByClassName('validators')[0]
+    var regex = /^[0-9]+$/;
+    if (x.match(regex)) {
+        validator.style.display = 'none'
+    } else {
+        validator.style.display = 'block'
+    }
+}
 
 setValuesIndicator()

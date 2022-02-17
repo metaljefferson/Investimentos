@@ -21,7 +21,7 @@
             <div class="rendimento-index">
                 <div>
                     <div>
-                        <p>Rendimento <img class="exclamacao" src="imagens/ponto-de-exclamacao.png" alt=""></p>
+                        <p>Rendimento <img class="rendimento_exclamacao" src="imagens/ponto-de-exclamacao.png" alt=""></p>
                         <form id="form_rendimento" class="form_tipos_importacao">
                             <label>
                             <input type="radio" id="bruto" name="rendimento" value="bruto" checked="checked">
@@ -45,11 +45,13 @@
                     </div>
                     <div>
                         <p class="rendimento_negrito">Aponte Inicial</p>
-                        <input class="aponte_mensal" type="text" id="aponte_inicial" name="aponte_inicial" value=""> <label for="html"></label>
+                        <input class="aponte_mensal" type="text" id="aponte_inicial" onchange="checkInp(this)" name="aponte_inicial" value=""> <label for="html"></label>
+                        <div class="validators">Este campo só aceita numeros</div>
                     </div>
                     <div>
                         <p class="rendimento_negrito">Prazo (em meses)</p>
-                        <input class="aponte_mensal" type="text" id="prazo" name="prazo" value=""> <label for="html"></label>
+                        <input class="aponte_mensal" type="text" id="prazo" onchange="checkInp(this)" name="prazo" value=""> <label for="html"></label>
+                        <div class="validators">Este campo só aceita numeros</div>
                     </div>
                     <div>
                         <p class="rendimento_negrito">IPCA (ao ano)</p>
@@ -59,7 +61,7 @@
                 </div>
                 <div>
                     <div>
-                        <p>Tipos de Indexação <img class="exclamacao" src="imagens/ponto-de-exclamacao.png" alt=""></p>
+                        <p>Tipos de Indexação <img class="indexacao_exclamacao" src="imagens/ponto-de-exclamacao.png" alt=""></p>
                         <form class="form_tipos_importacao" id="form_tipos_importacao">
                             <label>
                                     <input type="radio" name="tipos_importacao" value="pre" checked="checked" />
@@ -89,11 +91,13 @@
                     </div>
                     <div>
                         <p class="indexacao_negrito">Aponte Mensal</p>
-                        <input class="aponte_mensal" type="text" id="aponte_mensal" name="aponte_mensal" value=""> <label for="html"></label>
+                        <input class="aponte_mensal" type="text" id="aponte_mensal" onchange="checkInp(this)" name="aponte_mensal" value=""> <label for="html"></label>
+                        <div class="validators">Este campo só aceita numeros</div>
                     </div>
                     <div>
                         <p class="indexacao_negrito">Rentabilidade</p>
-                        <input class="aponte_mensal" type="text" id="rentabilidade" name="rentabilidade" value=""> <label for="html"></label>
+                        <input class="aponte_mensal" type="text" id="rentabilidade" onchange="checkInp(this)" name="rentabilidade" value=""> <label for="html"></label>
+                        <div class="validators">Este campo só aceita numeros</div>
                     </div>
                     <div>
                         <p class="indexacao_negrito">CDI (ao ano)</p>
@@ -104,8 +108,7 @@
             </div>
         </div>
         <div class="simulacao">
-            <h2>Resultado de Simulação</h2>
-            <!-- <div class="loader"></div> -->
+            <h2>Resultado da Simulação</h2>
             <div class="valor">
                 <div>
                     <p>Valor final Bruto</p>
@@ -121,7 +124,7 @@
                 </div>
                 <div>
                     <p>Valor Final Líquido</p>
-                    <input id="valor_final_liquido"></input>
+                    <input class="color_input" id="valor_final_liquido"></input>
                 </div>
                 <div>
                     <p>Valor Total Investido</p>
@@ -129,7 +132,7 @@
                 </div>
                 <div>
                     <p>Ganho Líquido</p>
-                    <input id="ganho_liquido"></input>
+                    <input class="color_input" id="ganho_liquido"></input>
                 </div>
             </div>
             <div class="grafico" id="grafico">

@@ -20,12 +20,19 @@ button {
     margin-left: 3rem;
 }
 
+.simulacao {
+    margin-right: 3rem;
+}
+
+.color_input {
+    color: #00b400;
+    opacity: 0.9;
+}
+
 .container {
     display: flex;
     justify-content: space-around;
 }
-
-.simulacao {}
 
 .rendimento-index {
     display: flex;
@@ -56,13 +63,19 @@ button {
     border-radius: 6px;
     width: 12rem;
     font-weight: 800;
-    background-color: orange;
+    background-color: coral;
+    opacity: 0.9;
     cursor: pointer;
 }
 
 .botao_simular:active {
-    background-color: pink;
-    color: purple
+    background-color: #708090;
+    color: #00FFFF;
+}
+
+.limpar_campos:active {
+    background-color: #708090;
+    color: #00FFFF;
 }
 
 .valor>div>p+input {
@@ -83,8 +96,16 @@ button {
     font-weight: 700
 }
 
-.exclamacao {
-    margin-left: 3rem;
+.grafico p {
+    font-weight: 700
+}
+
+.indexacao_exclamacao {
+    margin-left: 6.7rem;
+}
+
+.rendimento_exclamacao {
+    margin-left: 5.5rem;
 }
 
 .aponte_mensal {
@@ -124,7 +145,7 @@ form.form_tipos_importacao>label {
     border: 2px solid grey;
     margin-bottom: -2px;
     cursor: pointer;
-    padding-right: 1rem
+    padding-right: 0.5rem
 }
 
 form.form_tipos_importacao>label:nth-child(1) {
@@ -171,7 +192,8 @@ form.form_tipos_importacao>label>input:checked~span::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: orange;
+    background: coral;
+    opacity: 0.9;
     z-index: -1;
 }
 
@@ -217,27 +239,86 @@ form.form_tipos_importacao>label>input:checked+div {
 }
 
 .divContainer {
+    width: 9rem;
+    display: flex;
+    align-items: flex-end;
+    gap: 0.3rem;
+}
+
+.divContainer::before {
+    content: 'valor (R$)';
+    display: block;
     transform: rotate(-90deg);
-    width: 15rem;
-    height: 15rem;
+    align-self: center;
+    position: absolute;
+    margin-left: -50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700
+}
+
+.tempo_meses {
+    width: 100%;
+    text-align: center;
+}
+
+.legenda_aporte {
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    height: 20px;
+    align-items: center;
+}
+
+.legenda_aporte span {
+    margin: 50px;
+    display: block;
+}
+
+.legenda_aporte .com_aporte::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: coral;
+    display: block;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -25px;
+    border-radius: 50%;
+    opacity: 0.9;
+}
+
+.legenda_aporte .sem_aporte::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    display: block;
+    position: absolute;
+    margin-top: -20px;
+    margin-left: -25px;
+    border-radius: 50%;
+    opacity: 0.9;
 }
 
 .divConteudo {
     position: relative;
-    margin-top: 1rem;
+    margin-top: 0.4rem;
 }
 
 .divConteudo p {
-    position: absolute;
-    transform: rotate(90deg);
-    left: -1rem;
-    top: 0;
+    margin-left: 1rem;
 }
 
 .divBarras {
     display: flex;
-    gap: 0.5rem;
-    flex-direction: row-reverse;
+    gap: 0.1rem;
+    flex-direction: column;
+}
+
+.divBarras div {
+    width: 50px;
 }
 
 .divComAporte,
@@ -246,51 +327,15 @@ form.form_tipos_importacao>label>input:checked+div {
 }
 
 .divComAporte {
-    background-color: orangered;
+    background-color: coral;
+    opacity: 0.9;
 }
 
 .divSemAporte {
     background-color: #000;
 }
 
-
-/* .loader { */
-
-
-/* display: none; */
-
-
-/* border: 16px solid #f3f3f3; */
-
-
-/* Light grey */
-
-
-/* border-top: 16px solid #3498db; */
-
-
-/* Blue */
-
-
-/* border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    animation: spin 2s linear infinite; */
-
-
-/* } */
-
-
-/* @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-} */
-
-
-/* .grafico {
-    display: none
-} */
+.validators {
+    display: none;
+    color: red;
+}
