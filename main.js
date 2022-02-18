@@ -9,10 +9,9 @@ const valor_total_investido = document.getElementById('valor_total_investido')
 const ganho_liquido = document.getElementById('ganho_liquido')
 const form_rendimento = document.getElementById('form_rendimento')
 const form_tipos_importacao = document.getElementById('form_tipos_importacao')
-    // const valor = document.querySelector('.valor')
 const grafico = document.getElementById('grafico')
-    // const loader = document.querySelector('.loader')
 
+// Está variavel adiciona as intruções para trazer os resultados da api atráves da utilização do método get
 const options = {
     mode: 'cors',
     credentials: 'include',
@@ -38,21 +37,21 @@ const returnSimulation = async(search) => {
 }
 
 
-
+// Função Seta os valores dos indicadores
 const setValuesIndicator = async() => {
-    const ipca_value = await returnIndicator('nome=ipca').then(response => response[0].valor);
-    const cdi_value = await returnIndicator('nome=cdi').then(response => response[0].valor);
-    input_ipca.value = ipca_value
-    input_cdi.value = cdi_value
-}
-
+        const ipca_value = await returnIndicator('nome=ipca').then(response => response[0].valor);
+        const cdi_value = await returnIndicator('nome=cdi').then(response => response[0].valor);
+        input_ipca.value = ipca_value
+        input_cdi.value = cdi_value
+    }
+    // Função retorna os valores dependendo do input setado E faz um fetch no returnsimulaton passando como parâmetro os valores setados desses inputs
 const returnFieldsSimulation = async() => {
-    const form_rendimento_value = form_rendimento.elements['rendimento'].value;
-    const form_tipos_importacao_value = form_tipos_importacao.elements['tipos_importacao'].value;
-    return returnSimulation(`tipoIndexacao=${form_tipos_importacao_value}&tipoRendimento=${form_rendimento_value}`).then(response => response);
+        const form_rendimento_value = form_rendimento.elements['rendimento'].value;
+        const form_tipos_importacao_value = form_tipos_importacao.elements['tipos_importacao'].value;
+        return returnSimulation(`tipoIndexacao=${form_tipos_importacao_value}&tipoRendimento=${form_rendimento_value}`).then(response => response);
 
-}
-
+    }
+    // Função Gera a simulação e retorna os dados da api que foi setado os valores da input
 const generateSimulation = async() => {
     const fields = await returnFieldsSimulation()
     valor_final_bruto.value = fields[0].valorFinalBruto
@@ -63,23 +62,24 @@ const generateSimulation = async() => {
     ganho_liquido.value = fields[0].ganhoLiquido
 }
 
-const generateGraphic = async() => {
+// Essa Função Gera o Grafico
+const generateChart = async() => {
     const fields = await returnFieldsSimulation()
     try {
-        deleteGraphic()
+        deleteChart()
     } catch (error) {
         console.log(error)
     }
     try {
-        createElementsGraphic(fields)
+        createChart(fields)
     } catch (error) {
         console.log(error)
     }
 }
 
 
-
-const createElementsGraphic = (fields) => {
+// Função que cria o grafico
+const createChart = (fields) => {
     const comAporte = fields[0].graficoValores.comAporte
     const semAporte = fields[0].graficoValores.semAporte
     const comAporteLength = Object.entries(comAporte).length
@@ -112,7 +112,8 @@ const createElementsGraphic = (fields) => {
     grafico.insertAdjacentHTML('beforeend', ' <div id="legendas"> <p class="tempo_meses">Tempo (meses)</p><div class="legenda_aporte"><span class="com_aporte">Com aporte</span><span class="sem_aporte">Sem aporte</span></div> </div>')
 }
 
-const deleteGraphic = () => {
+// Função que limpa os campos
+const deleteChart = () => {
     const divContainer = document.getElementById('divContainer')
     divContainer.remove()
     const divLegendas = document.getElementById('legendas')
@@ -121,21 +122,21 @@ const deleteGraphic = () => {
 
 // Função que limpa os campos
 const emptyFields = () => {
-    input_ipca.value = ""
-    input_cdi.value = ""
-    valor_final_bruto.value = ""
-    aliquota_ir.value = ""
-    valor_pago_ir.value = ""
-    valor_final_liquido.value = ""
-    valor_total_investido.value = ""
-    ganho_liquido.value = ""
-    aponte_inicial.value = ""
-    prazo.value = ""
-    aponte_mensal.value = ""
-    rentabilidade.value = ""
-    deleteGraphic()
-}
-
+        input_ipca.value = ""
+        input_cdi.value = ""
+        valor_final_bruto.value = ""
+        aliquota_ir.value = ""
+        valor_pago_ir.value = ""
+        valor_final_liquido.value = ""
+        valor_total_investido.value = ""
+        ganho_liquido.value = ""
+        aponte_inicial.value = ""
+        prazo.value = ""
+        aponte_mensal.value = ""
+        rentabilidade.value = ""
+        deleteChart()
+    }
+    // Função que valida apenas numeros no input
 function checkInp(e) {
     var x = e.value;
     let validator = e.parentNode.getElementsByClassName('validators')[0]
