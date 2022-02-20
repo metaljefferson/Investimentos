@@ -11,7 +11,7 @@ const form_rendimento = document.getElementById('form_rendimento')
 const form_tipos_importacao = document.getElementById('form_tipos_importacao')
 const grafico = document.getElementById('grafico')
 
-// Está variavel adiciona as intruções para trazer os resultados da api atráves da utilização do método get
+// Está variavel adiciona as opcões para o fetch
 const options = {
     mode: 'cors',
     credentials: 'include',
